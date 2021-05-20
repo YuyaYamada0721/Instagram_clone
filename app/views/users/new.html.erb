@@ -1,22 +1,25 @@
 <h1>新規登録</h1>
 <%= form_with(model: @user, local: true) do |f| %>
-  <div class = "new-form clearfix">
-    <div class = "form-box">
-      <%= f.label :苗字・名前 %>
+  <div class = "new-form">
+      <%= f.label :名前 %>
       <%= f.text_field :name %>
-    </div>
-    <div class = "form-box">
       <%= f.label :メールアドレス %>
       <%= f.email_field :email %>
-    </div>
-    <div class = "form-box">
       <%= f.label :パスワード %>
       <%= f.password_field :password %>
-    </div>
-    <div class = "form-box">
       <%= f.label :パスワード確認 %>
       <%= f.password_field :password_confirmation %>
-    </div>
   </div>
   <%= f.submit "作成する", class: "send"%>
+<% end %>
+
+<% if @user.errors.any? %>
+<div id = "error_explanation">
+  <h2><%= pluralize(@user.errors.count,"error") %> prohibited this <%= @user.name %> from being saved:</h2>
+  <ul>
+  <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</div>
 <% end %>

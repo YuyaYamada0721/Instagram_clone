@@ -27,12 +27,6 @@ div#body {
   margin: auto;
 }
 
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
 #header {
   border-bottom: solid 2px black;
   height: 100px;
@@ -76,19 +70,10 @@ textarea {
 
 /* =====new new画面====== */
 
-.form-box {
-  float: left;
-  width: 50%;
-}
-
-.write-field {
-  float: left;
-}
-
 label {
-  margin: 10px 60px;
+  display: block;
 }
 
 input {
-  margin: 10px 20px;
+  display: block;
 }
