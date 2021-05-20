@@ -12,21 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image %>
+    <%= form.label :画像： %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label :内容： %>
     <%= form.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "投稿", class: "send" %>
   </div>
 <% end %>

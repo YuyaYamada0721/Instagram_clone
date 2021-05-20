@@ -36,6 +36,20 @@ div#body {
   margin: auto;
 }
 
+textarea {
+  width: 500px;
+  height: 200px;
+  font-size: 2rem;
+}
+
+label {
+  margin: 30px;
+}
+
+.field {
+  margin: 50px;
+}
+
 #footer {
   font-size: 2rem;
   text-align: center;
@@ -43,4 +57,9 @@ div#body {
   height: 100px;
   width: 100%;
   margin: auto;
+}
+
+.send {
+  margin: 20px;
+  font-family: 'HanziPen TC', sans-serif;
 }
