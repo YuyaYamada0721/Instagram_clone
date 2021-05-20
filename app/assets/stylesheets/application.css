@@ -27,6 +27,12 @@ div#body {
   margin: auto;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 #header {
   border-bottom: solid 2px black;
   height: 100px;
@@ -50,10 +56,6 @@ textarea {
   font-size: 2rem;
 }
 
-label {
-  margin: 30px;
-}
-
 .field {
   margin: 50px;
 }
@@ -70,4 +72,23 @@ label {
 .send {
   margin: 20px;
   font-family: 'HanziPen TC', sans-serif;
+}
+
+/* =====new new画面====== */
+
+.form-box {
+  float: left;
+  width: 50%;
+}
+
+.write-field {
+  float: left;
+}
+
+label {
+  margin: 10px 60px;
+}
+
+input {
+  margin: 10px 20px;
 }
