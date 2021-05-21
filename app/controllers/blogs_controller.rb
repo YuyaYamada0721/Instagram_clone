@@ -1,68 +1,54 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :set_blog, only: %i[show edit update destroy]
 
   def index
     @blogs = Blog.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
-    if params[:back]
-      @blog = Blog.new(blog_params)
-    else
-      @blog = Blog.new
-    end
+    @blog = Blog.all
   end
 
   def confirm
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
+    render :new if @blog.invalid?
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
-    @blog = Blog.new(blog_params)
-
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to @blog, notice: "Blog was successfully created." }
-        format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    @blog = current_user.blogs.build(blog_params)
+    if params[:back]
+      render :new
+    elsif @blog.save
+      redirect_to blogs_path, notice: '投稿しました'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: "Blog was successfully updated." }
-        format.json { render :show, status: :ok, location: @blog }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog.update(blog_params)
+      redirect_to blogs_path, notice: '投稿を編集しました'
+    else
+      render :edit
     end
   end
 
   def destroy
     @blog.destroy
-    respond_to do |format|
-      format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to blogs_path, notice: '投稿を削除しました'
   end
 
   private
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
 
-    def blog_params
-      params.require(:blog).permit(:image, :image_cache, :content, :user_id)
-    end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
+
+  def blog_params
+    params.require(:blog).permit(:image, :image_cache, :content, :user_id)
+  end
 end
