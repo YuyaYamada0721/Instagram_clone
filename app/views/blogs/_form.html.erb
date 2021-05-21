@@ -14,11 +14,13 @@
   <div class="field">
     <%= form.label :画像： %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="field">
     <%= form.label :内容： %>
     <%= form.text_area :content %>
+    <%= form.hidden_field :content %>
   </div>
 
   <div class="actions">

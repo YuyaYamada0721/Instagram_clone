@@ -9,7 +9,15 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blog_params)
+    else
+      @blog = Blog.new
+    end
+  end
+
+  def confirm
+    @blog = Blog.new(blog_params)
   end
 
   def edit
@@ -55,6 +63,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:image, :content, :user_id)
+      params.require(:blog).permit(:image, :image_cache, :content, :user_id)
     end
 end
