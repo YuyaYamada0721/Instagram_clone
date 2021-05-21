@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   def show; end
 
   def new
-    @blog = Blog.all
+    @blog = Blog.new
   end
 
   def confirm
@@ -27,6 +27,7 @@ class BlogsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def update
