@@ -27,7 +27,6 @@ class BlogsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def update
