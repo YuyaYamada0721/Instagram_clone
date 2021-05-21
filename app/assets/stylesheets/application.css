@@ -38,6 +38,7 @@ div#body {
   font-size: 2rem;
   text-align: center;
   padding-top: 15px;
+  margin-bottom: 0;
 }
 
 th {
