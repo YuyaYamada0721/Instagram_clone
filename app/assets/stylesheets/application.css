@@ -77,3 +77,14 @@ label {
 input {
   display: block;
 }
+
+/* ====================== */
+
+/* =====sessions new画面===== */
+
+.send-sessions {
+  margin: 20px;
+  font-family: 'HanziPen TC', sans-serif;
+}
+
+/* ============================== */
