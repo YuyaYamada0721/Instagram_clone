@@ -1,11 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorite = Favorite.all
-  end
-
-  def show
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorites = Favorite.all
   end
 
   def create

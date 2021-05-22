@@ -5,7 +5,9 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
 
-  def show; end
+  def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+  end
 
   def new
     @blog = Blog.new
