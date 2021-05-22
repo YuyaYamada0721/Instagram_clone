@@ -1,12 +1,18 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
   end
 
   def show
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+      @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    if logged_in?
+      @favorite = current_user.favorites.find_by(user_id: @user_id)
+    else
+      record_to new_user_path, notice: 'ログインが必要です'
+    end
   end
 
   def new
