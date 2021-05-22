@@ -2,5 +2,6 @@
 <%= link_to  '新規投稿', new_blog_path %>
 <h1>名前：<%= @user.name%></h1>
 <p>メールアドレス：<%= @user.email %></p>
-<p>プロフィール画像：<%= @user.image %></p>
+<p>プロフィール画像：<%= image_tag @user.image.url %></p>
 <p>自己紹介：<%= @user.content %></p>
+<%= link_to 'プロフィール編集', edit_user_path %>
